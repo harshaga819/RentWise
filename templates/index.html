@@ -9,10 +9,13 @@
 </head>
 
 <body>
-  <div class="tagline">RENTWISE<br />SMARTER RENTS. BETTER LIVING</div>
-  <div class="title">The Rent Whisperer</div>
-  <div class="subtitle">Right Price, Right Place, Every Time</div>
-  <button class="predict-btn" onclick="toggleForm()">Predict Rent</button>
+  <!-- Wrap homepage content -->
+  <div id="homepage">
+    <div class="tagline">RENTWISE<br />SMARTER RENTS. BETTER LIVING</div>
+    <div class="title">The Rent Whisperer</div>
+    <div class="subtitle">Right Price, Right Place, Every Time</div>
+    <button class="predict-btn" onclick="toggleForm()">Predict Rent</button>
+  </div>
 
   <!-- Hidden Form -->
   <div class="form-container" id="rentForm" style="display: none;">
@@ -44,8 +47,9 @@
 
   <script>
     function toggleForm() {
-      const form = document.getElementById('rentForm');
-      form.style.display = (form.style.display === 'none' || form.style.display === '') ? 'block' : 'none';
+      document.getElementById('homepage').style.display = 'none'; // Hide homepage
+      document.getElementById('rentForm').style.display = 'block'; // Show form
+      window.scrollTo(0, 0);
     }
   
     {% if show_form %}
