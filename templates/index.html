@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RentWise</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+  <div class="tagline">RENTWISE<br />SMARTER RENTS. BETTER LIVING</div>
+  <div class="title">The Rent Whisperer</div>
+  <div class="subtitle">Right Price, Right Place, Every Time</div>
+  <button class="predict-btn" onclick="toggleForm()">Predict Rent</button>
+
+  <!-- Hidden Form -->
+  <div class="form-container" id="rentForm" style="display: none;">
+    <form action="/predict" method="post">
+      <h2>RentWise</h2>
+
+      <label for="location">Select Location:</label>
+      <select name="location" required>
+        {% for loc in locations %}
+        <option value="{{ loc }}">{{ loc }}</option>
+        {% endfor %}
+      </select>
+
+      <label for="bhk">Enter BHK:</label>
+      <input type="number" name="bhk" min="1" required>
+
+      <label for="area">Enter Carpet Area (in sqft):</label>
+      <input type="number" name="area" min="100" required>
+
+      <button type="submit">Predict Rent</button>
+
+      {% if prediction %}
+      <div class="result">
+        Predicted Rent: ₹{{ prediction }}
+      </div>
+      {% endif %}
+    </form>
+  </div>
+
+  <script>
+    function toggleForm() {
+      const form = document.getElementById('rentForm');
+      form.style.display = (form.style.display === 'none' || form.style.display === '') ? 'block' : 'none';
+    }
+  
+    {% if show_form %}
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById('rentForm');
+        if (form) {
+          form.style.display = 'block';
+          window.scrollTo(0, form.offsetTop);
+        }
+      });
+    {% endif %}
+  </script>
+</body>
+
+</html>
