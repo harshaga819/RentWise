@@ -1,7 +1,9 @@
 # RentWise - Smarter Rents, Better Living
 
-![RentWise UI Screenshot](images/image1.jpeg)
-![RentWise Form Screenshot](images/image2.jpeg)
+## Live link - https://rentwise-1.onrender.com
+
+![RentWise UI Screenshot](images/image1.png)
+![RentWise Form Screenshot](images/image2.png)
 
 RentWise is a Rent Prediction System that leverages machine learning to predict rental prices based on property features like location, carpet area, and BHK. It features an interactive web interface and a trained machine learning model built using real-world data scraped from **MagicBricks.com**.
 
