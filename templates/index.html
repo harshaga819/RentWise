@@ -35,6 +35,9 @@
       <label for="area">Enter Carpet Area (in sqft):</label>
       <input type="number" name="area" min="100" required>
 
+      <label for="price_per_sqft">Enter Price per Sqft:</label>
+      <input type="number" name="price_per_sqft" min="1" required>
+
       <button type="submit">Predict Rent</button>
 
       {% if prediction %}
