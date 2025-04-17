@@ -21,17 +21,19 @@ def predict():
     location = request.form['location']
     bhk = int(request.form['bhk'])
     area = float(request.form['area'])
+    price_per_sqft = float(request.form['price_per_sqft'])
 
     # Step 1: Scale the Carpet Area
     area_scaled = scaler.transform([[area]])[0][0]
 
-    # Step 2: Initialize input dictionary
+    # Step 2: Initialize input dictionary with all required features
     input_dict = {
         'Carpet Area': area_scaled,
         'BHK': bhk,
+        'Price_per_sqft': price_per_sqft
     }
 
-    # Step 3: One-hot encode location (manual)
+    # Step 3: One-hot encode location manually
     for loc in locations:
         col_name = f"Location_{loc}"
         input_dict[col_name] = 1 if loc == location else 0
@@ -45,11 +47,8 @@ def predict():
     # Step 6: Predict
     predicted_rent = model.predict(input_df)[0]
 
-    # ✅ Show the form after prediction
-    return render_template('index.html',
-                           prediction=round(predicted_rent, 2),
-                           locations=locations,
-                           show_form=True)
+    # Step 7: Return prediction
+    return render_template('index.html', prediction=round(predicted_rent, 3), locations=locations, show_form=True)
 
 if __name__ == "__main__":
     app.run(debug=True)
