@@ -6,7 +6,11 @@
   }
   
   body {
-    background-color: #ffffff;
+    background-color: #f7f3f3;
+    background-image: url("image/room3.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     height: 100vh;
     color: #333;
     display: flex;
@@ -16,30 +20,29 @@
     text-align: center;
     padding-top: 30px;
   }
+
+  #homepage{
+    width: 100vw;
+    height: 85vh;
+  }
   
   .tagline {
     font-size: 0.9rem;
     letter-spacing: 4px;
-    color: #a87b07;
-    margin-bottom: 20px;
+    color: #000000;
+    margin-bottom: 190px;
   }
   
   .title {
     font-size: 3rem;
     font-weight: bold;
-    color: #c98d1a;
-    margin-bottom: 10px;
-  }
-  
-  .subtitle {
-    font-size: 1.2rem;
-    color: #a87b07;
-    margin-bottom: 40px;
+    color: #504e4e;
+    margin-bottom: 50px;
   }
   
   .predict-btn {
     background-color: rgba(255, 255, 255, 0.9);
-    color: #b69b5f;
+    color: #504e4e;
     border: none;
     padding: 15px 40px;
     font-size: 1rem;
@@ -51,24 +54,25 @@
   }
   
   .predict-btn:hover {
-    background-color: #f5d492;
+    background-color: #504e4e;
     color: #fff;
   }
   
   /* Rent Prediction Form Styles */
   .form-container form {
-    background: #f5d492;
+    background: #dbd8d8;
     padding: 40px;
     border-radius: 12px;
     width: 400px;
     margin: auto;
     box-shadow: 0 0 15px rgb(12, 12, 12);
+    color: #504e4e;
   }
   
   .form-container h2 {
     text-align: center;
     margin-bottom: 20px;
-    color: #63320d;
+    color: #504e4e;
   }
   
   .form-container input,
@@ -82,7 +86,7 @@
   }
   
   .form-container button {
-    background-color: #63320d;
+    background-color: #504e4e;
     color: white;
     font-weight: bold;
     margin-top: 20px;
