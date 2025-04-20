@@ -72,8 +72,12 @@ RentPrediction/
 │   └── index.html             # HTML page
 ├── static/
 │   └── style.css              # CSS styling
+|   └── script.js              # JavaScript 
+|   └── image
+|       └── image3.jpg         # Background image
 ├── images/
-│   └── image1.jpeg            # Background image
+│   └── image1.png            # Screenshot
+|   └── image2.png
 ```
 
 ---
