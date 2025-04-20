@@ -6,6 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RentWise</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -13,13 +16,12 @@
   <div id="homepage">
     <div class="tagline">RENTWISE<br />SMARTER RENTS. BETTER LIVING</div>
     <div class="title">The Rent Whisperer</div>
-    <div class="subtitle">Right Price, Right Place, Every Time</div>
     <button class="predict-btn" onclick="toggleForm()">Predict Rent</button>
   </div>
 
   <!-- Hidden Form -->
   <div class="form-container" id="rentForm" style="display: none;">
-    <form action="/predict" method="post">
+    <form id="rentFormAction">
       <h2>RentWise</h2>
 
       <label for="location">Select Location:</label>
@@ -34,62 +36,46 @@
 
       <label for="area">Select Carpet Area Range:</label>
       <select id="areaRange" onchange="setRandomValue('areaRange', 'area')" required>
-        <option value="">-- Select Range --</option>
+        <option value="">Select Range</option>
         <option value="100-200">100 - 200 sqft</option>
         <option value="201-300">201 - 300 sqft</option>
         <option value="301-400">301 - 400 sqft</option>
         <option value="401-500">401 - 500 sqft</option>
+        <option value="501-600">501 - 600 sqft</option>
+        <option value="601-700">601 - 700 sqft</option>
+        <option value="701-800">701 - 800 sqft</option>
+        <option value="801-900">801 - 900 sqft</option>
       </select>
       <input type="hidden" name="area" id="area" required>
 
       <label for="price_per_sqft">Select Price per Sqft Range:</label>
       <select id="priceRange" onchange="setRandomValue('priceRange', 'price_per_sqft')" required>
-        <option value="">-- Select Range --</option>
+        <option value="">Select Range</option>
         <option value="10-20">10 - 20 ₹/sqft</option>
         <option value="21-30">21 - 30 ₹/sqft</option>
         <option value="31-40">31 - 40 ₹/sqft</option>
         <option value="41-50">41 - 50 ₹/sqft</option>
+        <option value="51-60">51 - 60 ₹/sqft</option>
       </select>
       <input type="hidden" name="price_per_sqft" id="price_per_sqft" required>
 
       <button type="submit">Predict Rent</button>
 
-      {% if prediction %}
-      <div class="result">
-        Predicted Rent: ₹{{ prediction }}
+      <!-- Loading Animation -->
+      <div id="loading" style="display: none;">
+        <img src="https://www.google.com/images/spin-32.gif" alt="loading">
+        <span>Loading...</span>
       </div>
-      {% endif %}
+
+      <!-- Prediction Range Result -->
+      <div class="result" id="predictionResult" style="display: none;">
+        <span id="predictedRentRange"></span>
+      </div>
     </form>
   </div>
 
-  <script>
-    function toggleForm() {
-      document.getElementById('homepage').style.display = 'none';
-      document.getElementById('rentForm').style.display = 'block';
-      window.scrollTo(0, 0);
-    }
-
-    function setRandomValue(selectId, inputId) {
-      const selectedRange = document.getElementById(selectId).value;
-      if (selectedRange) {
-        const [min, max] = selectedRange.split('-').map(Number);
-        const randomValue = Math.floor(Math.random() * (max - min + 1)) + min;
-        document.getElementById(inputId).value = randomValue;
-      } else {
-        document.getElementById(inputId).value = '';
-      }
-    }
-
-    {% if show_form %}
-    document.addEventListener("DOMContentLoaded", function () {
-      const form = document.getElementById('rentForm');
-      if (form) {
-        form.style.display = 'block';
-        window.scrollTo(0, form.offsetTop);
-      }
-    });
-    {% endif %}
-  </script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+  
 </body>
 
 </html>
